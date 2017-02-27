@@ -83,7 +83,11 @@ module Griddler
       end
 
       def html_part
-        multipart? ? message.html_part.body.to_s : nil
+        if multipart? && message.html_part
+          message.html_part.body.to_s
+        else
+          nil
+        end
       end
 
       def attachment_files
